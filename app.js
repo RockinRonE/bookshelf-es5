@@ -41,6 +41,12 @@ UI.prototype.showAlert = function(message, className) {
 
 }
 
+UI.prototype.deleteBook = function(target) {
+	if(target.className === 'delete') {
+		target.parentElement.parentElement.remove()
+	}
+}
+
 document.getElementById('book-form').addEventListener('submit', e => {
 	e.preventDefault()
 	const title = document.getElementById('title').value,
@@ -61,3 +67,20 @@ document.getElementById('book-form').addEventListener('submit', e => {
 
 	
 })
+
+
+// Event listener for DELETE
+document.getElementById('book-list').addEventListener('click', function(e) {
+	e.preventDefault()
+
+	const ui = new UI()
+
+	ui.deleteBook(e.target)
+	ui.showAlert('Book removed!', 'success')
+
+})
+
+
+
+
+
